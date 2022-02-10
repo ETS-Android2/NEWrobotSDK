@@ -50,11 +50,12 @@ public class cvAuto3Blue extends LinearOpMode {
             telemetry.addData("img analysis", pipeline.getAnalysis());
             telemetry.update();
             robot.clawClamp();
+            sleep(2000);
             if (pipeline.getAnalysis() == camera.SkystonePosition.RIGHT) {
                 telemetry.addData("right", "found item in right box");
                 telemetry.update(); //highest
                 robot.driveForwardDistance(.25, (int) (650/TICKSTOMMTRAVEL));
-                robot.rotate(-45);
+                robot.rotate(-55);
                 robot.liftMotor(-1940, -.5);
                 robot.driveForwardDistance(.25, (int) (220/TICKSTOMMTRAVEL)); //random number
                 robot.clawOpen();
@@ -62,7 +63,7 @@ public class cvAuto3Blue extends LinearOpMode {
                 robot.driveBackDistance(.25, (int) (150/TICKSTOMMTRAVEL));    //away from hub and to warehouse
                 robot.liftMotor(800, .5);
                 robot.rotate(0);
-                robot.driveBackDistance(.6, (int) (610/TICKSTOMMTRAVEL)); //go to white warehouse //go to white warehouse
+                robot.driveBackDistance(.6, (int) (630/TICKSTOMMTRAVEL)); //go to white warehouse //go to white warehouse
                 robot.rotate(5);
                 robot.driveLeftDistance(.5, 2000);
                 robot.liftMotor(970, .5);
@@ -71,7 +72,7 @@ public class cvAuto3Blue extends LinearOpMode {
                 telemetry.addData("center", "found item in center box");
                 telemetry.update();
                 robot.driveForwardDistance(.25, (int) (650/TICKSTOMMTRAVEL));
-                robot.rotate(-45);
+                robot.rotate(-55);
                 robot.liftMotor(-1130, -.5);
                 robot.driveForwardDistance(.25, (int) (220/TICKSTOMMTRAVEL)); //random number
                 robot.clawOpen();
@@ -79,7 +80,7 @@ public class cvAuto3Blue extends LinearOpMode {
                 robot.driveBackDistance(.25, (int) (150/TICKSTOMMTRAVEL));    //away from hub and to warehouse
                 //robot.liftMotor(1130, .5);
                 robot.rotate(0);
-                robot.driveBackDistance(.6, (int) (610/TICKSTOMMTRAVEL)); //go to white warehouse //go to white warehouse
+                robot.driveBackDistance(.6, (int) (630/TICKSTOMMTRAVEL)); //go to white warehouse //go to white warehouse
                 robot.rotate(5);
                 robot.driveLeftDistance(.5, 2000);
                 robot.liftMotor(1130, .5);
@@ -88,7 +89,7 @@ public class cvAuto3Blue extends LinearOpMode {
                 telemetry.addData("left", "found item in left box");
                 telemetry.update();
                 robot.driveForwardDistance(.25, (int) (610/TICKSTOMMTRAVEL));
-                robot.rotate(-45);
+                robot.rotate(-55);
                 robot.liftMotor(-454, -.5);
                 robot.driveForwardDistance(.25, (int) (220/TICKSTOMMTRAVEL)); //random number
                 robot.clawOpen();
@@ -96,7 +97,7 @@ public class cvAuto3Blue extends LinearOpMode {
                 robot.driveBackDistance(.25, (int) (150/TICKSTOMMTRAVEL));    //away from hub and to warehouse
                 //robot.liftMotor(454, .5);
                 robot.rotate(0);
-                robot.driveBackDistance(.6, (int) (610/TICKSTOMMTRAVEL)); //go to white warehouse //go to white warehouse
+                robot.driveBackDistance(.6, (int) (630/TICKSTOMMTRAVEL)); //go to white warehouse //go to white warehouse
                 robot.rotate(5);
                 robot.driveLeftDistance(.5, 2000);
                 robot.liftMotor(454, .5);

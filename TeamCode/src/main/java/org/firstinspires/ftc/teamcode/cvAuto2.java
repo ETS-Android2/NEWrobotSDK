@@ -54,7 +54,7 @@ public class cvAuto2 extends LinearOpMode {
                 telemetry.addData("right", "found item in right box");
                 telemetry.update();
                 robot.driveForwardDistance(.25, (int) (610/TICKSTOMMTRAVEL));
-                robot.rotate(-53);
+                robot.rotate(-57);
                 robot.liftMotor(-1940, -1);
                 robot.driveForwardDistance(.25, (int) (240/TICKSTOMMTRAVEL));
                 robot.clawOpen();
@@ -74,10 +74,10 @@ public class cvAuto2 extends LinearOpMode {
                 //robot.duckServo(1, 4400);
                 robot.driveLeftDistance(.5, (int) (170/TICKSTOMMTRAVEL));
                 robot.rotate(-45);
-                robot.duckServo(-1, 4400);
+                robot.duckServo(-1, 5000);
                 robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
                 robot.rotate(0);
-                robot.driveForwardDistance(.5, (int) (600/TICKSTOMMTRAVEL));
+                robot.driveForwardDistance(.5, (int) (400/TICKSTOMMTRAVEL));
                 sleep(500);
                 robot.rotate(0);
             }
@@ -85,7 +85,7 @@ public class cvAuto2 extends LinearOpMode {
                 telemetry.addData("center", "found item in center box");
                 telemetry.update();
                 robot.driveForwardDistance(.25, (int) (610/TICKSTOMMTRAVEL));
-                robot.rotate(-53);
+                robot.rotate(-57);
                 robot.liftMotor(-1130, -1);
                 robot.driveForwardDistance(.25, (int) (240/TICKSTOMMTRAVEL));
                 robot.clawOpen();
@@ -105,10 +105,10 @@ public class cvAuto2 extends LinearOpMode {
                 //robot.duckServo(1, 4400);
                 robot.driveLeftDistance(.5, (int) (170/TICKSTOMMTRAVEL));
                 robot.rotate(-45);
-                robot.duckServo(-1, 4400);
+                robot.duckServo(-1, 5000);
                 robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
                 robot.rotate(0);
-                robot.driveForwardDistance(.5, (int) (600/TICKSTOMMTRAVEL));
+                robot.driveForwardDistance(.5, (int) (400/TICKSTOMMTRAVEL));
                 sleep(500);
                 robot.rotate(0);
             }
@@ -116,7 +116,7 @@ public class cvAuto2 extends LinearOpMode {
                 telemetry.addData("left", "found item in left box");
                 telemetry.update();
                 robot.driveForwardDistance(.25, (int) (610/TICKSTOMMTRAVEL));
-                robot.rotate(-53);
+                robot.rotate(-57);
                 robot.liftMotor(-456, -1);
                 robot.driveForwardDistance(.25, (int) (240/TICKSTOMMTRAVEL));
                 robot.clawOpen();
@@ -136,10 +136,10 @@ public class cvAuto2 extends LinearOpMode {
                 //robot.duckServo(1, 4400);
                 robot.driveLeftDistance(.5, (int) (170/TICKSTOMMTRAVEL));
                 robot.rotate(-45);
-                robot.duckServo(-1, 4400);
+                robot.duckServo(-1, 5000);
                 robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
                 robot.rotate(0);
-                robot.driveForwardDistance(.5, (int) (600/TICKSTOMMTRAVEL));
+                robot.driveForwardDistance(.5, (int) (400/TICKSTOMMTRAVEL));
                 sleep(500);
                 robot.rotate(0);
             }
