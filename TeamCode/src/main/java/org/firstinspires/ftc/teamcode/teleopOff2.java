@@ -26,7 +26,8 @@ public class teleopOff2 extends LinearOpMode {
         DcMotor bl = hardwareMap.dcMotor.get("back_left_motor");
         DcMotor br = hardwareMap.dcMotor.get("back_right_motor");
         DcMotor lift = hardwareMap.dcMotor.get("lift_dcMotor");
-        fl.setDirection(DcMotorSimple.Direction.REVERSE);
+        //fl.setDirection(DcMotorSimple.Direction.REVERSE);
+        fr.setDirection(DcMotorSimple.Direction.REVERSE);
         //bl.setDirection(DcMotorSimple.Direction.REVERSE);
         br.setDirection(DcMotorSimple.Direction.REVERSE);
 
@@ -43,6 +44,8 @@ public class teleopOff2 extends LinearOpMode {
         double finalAngle;
         double robotAngle;
 
+        double liftEncoder = 0;
+
         Orientation angles;
         BNO055IMU imu;
 
@@ -51,6 +54,9 @@ public class teleopOff2 extends LinearOpMode {
         parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
         parameters.angleUnit = BNO055IMU.AngleUnit.RADIANS;
         imu.initialize(parameters);
+
+        lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         telemetry.addData("Status", "Initalized");
         telemetry.update();
@@ -142,11 +148,17 @@ public class teleopOff2 extends LinearOpMode {
                 lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             }
 
+            liftEncoder = lift.getCurrentPosition();
+
             if((gamepad2.right_trigger > 0) && gamepad2.left_trigger == 0){
                 lift.setPower(-gamepad2.right_trigger);
             }
             if((gamepad2.left_trigger > 0) && gamepad2.right_trigger == 0){
-                lift.setPower(gamepad2.left_trigger);
+                if(liftEncoder <= 0){
+                    lift.setPower(gamepad2.left_trigger);
+                }else{
+                    lift.setPower(0);
+                }
             }
             if(gamepad2.right_trigger == 0 && gamepad2.left_trigger == 0){
                 lift.setPower(0);
@@ -162,6 +174,7 @@ public class teleopOff2 extends LinearOpMode {
 
             telemetry.addData("Drive Speed", driveSpeed);
             telemetry.addData("Field Centric", fieldCentric);
+            telemetry.addData("Lift Encoder", liftEncoder);
             telemetry.update();
         }
     }

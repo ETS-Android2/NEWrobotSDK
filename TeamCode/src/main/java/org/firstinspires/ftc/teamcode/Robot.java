@@ -55,9 +55,9 @@ public class Robot {
         bl = hwMap.dcMotor.get("back_left_motor");
         br = hwMap.dcMotor.get("back_right_motor");
         lift = hwMap.dcMotor.get("lift_dcMotor");
-        //fl.setDirection(DcMotorSimple.Direction.REVERSE);
+        fl.setDirection(DcMotorSimple.Direction.REVERSE);
         bl.setDirection(DcMotorSimple.Direction.REVERSE);
-        fr.setDirection(DcMotorSimple.Direction.REVERSE);
+        //fr.setDirection(DcMotorSimple.Direction.REVERSE);
         //br.setDirection(DcMotorSimple.Direction.REVERSE);
 
 

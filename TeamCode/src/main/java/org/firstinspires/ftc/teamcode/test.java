@@ -54,6 +54,9 @@ public class test extends LinearOpMode {
         double angle = 0;
         double rightX;
 
+        double liftEncoder = 0;
+        boolean runLift = true;
+
         Orientation angles;
         BNO055IMU imu;
 
@@ -63,50 +66,33 @@ public class test extends LinearOpMode {
         parameters.angleUnit = BNO055IMU.AngleUnit.RADIANS;
         imu.initialize(parameters);
 
+        lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         telemetry.addData("Status", "Initalized");
         telemetry.update();
         waitForStart();
         while (opModeIsActive()) {
 
-            if (gamepad1.a) {
-                if (driveSpeed == 1) { //if the current increment is 1, it'll switch to 0.5
-                    driveSpeed = 0.5;
-                    telemetry.addData("Slow Mode", "ON");
-                } else { //if the current increment is not 1, it'll switch to 1
-                    driveSpeed = 1;
-                    telemetry.addData("Normal speed", "ON");
+            liftEncoder = lift.getCurrentPosition();
+
+            if((gamepad1.right_trigger > 0) && gamepad1.left_trigger == 0){
+                lift.setPower(-gamepad1.right_trigger);
+            }
+            if((gamepad1.left_trigger > 0) && gamepad1.right_trigger == 0){
+                if(liftEncoder <= 0){
+                    lift.setPower(gamepad1.left_trigger);
+                }else{
+                    lift.setPower(0);
                 }
             }
-            angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
-            robotAngle = angles.firstAngle;
-
-            r = Math.hypot(-gamepad1.left_stick_x, gamepad1.left_stick_y);
-            fcgpAngle = Math.atan2(gamepad1.left_stick_y, -gamepad1.left_stick_x) - Math.PI/4;
-            rightX = -gamepad1.right_stick_x;
-            finalAngle = fcgpAngle - robotAngle;
-
-            telemetry.addData("gpangle", fcgpAngle);
-            telemetry.addData("finalAngle", finalAngle);
-
-            p1 = driveSpeed * (((Math.cos(finalAngle)) * r) + rightX);
-            p2 = driveSpeed * (((Math.sin(finalAngle)) * r) - rightX);
-            p3 = driveSpeed * (((Math.sin(finalAngle)) * r) + rightX);
-            p4 = driveSpeed * (((Math.cos(finalAngle)) * r) - rightX);
-
-            telemetry.addData("p1", p1);
-            telemetry.addData("p2", p2);
-            telemetry.addData("p3", p3);
-            telemetry.addData("p4", p4);
+            if(gamepad1.right_trigger == 0 && gamepad1.left_trigger == 0){
+                lift.setPower(0);
+            }
 
 
 
-            fl.setPower(p1);
-            fr.setPower(p2);
-            bl.setPower(p3);
-            br.setPower(p4);
-
-
+            telemetry.addData("Ticks", liftEncoder);
             telemetry.update();
 
 

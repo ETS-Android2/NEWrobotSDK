@@ -62,8 +62,7 @@ public class testAuto extends LinearOpMode {
         //robot.clawClamp();
         if(opModeIsActive()){
             //lvl 1 -454 ticks, lvl 2 -1130 ticks, lvl 3 -1940
-            robot.driveRightDistance(.5, 500);
-            robot.driveLeftDistance(.5, 500);
+            robot.driveForwardDistance(.5, 1000);
 
 
         }
