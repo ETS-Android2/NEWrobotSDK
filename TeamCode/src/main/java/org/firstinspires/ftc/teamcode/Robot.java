@@ -29,6 +29,7 @@ public class Robot {
     DcMotor bl = null;
     DcMotor br = null;
     DcMotor lift = null;
+    DcMotor duck = null;
 
     CRServo crServo = null;
     Servo clawServo = null;
@@ -55,13 +56,12 @@ public class Robot {
         bl = hwMap.dcMotor.get("back_left_motor");
         br = hwMap.dcMotor.get("back_right_motor");
         lift = hwMap.dcMotor.get("lift_dcMotor");
+        duck = hwMap.dcMotor.get("duck_motor");
         fl.setDirection(DcMotorSimple.Direction.REVERSE);
         bl.setDirection(DcMotorSimple.Direction.REVERSE);
         //fr.setDirection(DcMotorSimple.Direction.REVERSE);
         //br.setDirection(DcMotorSimple.Direction.REVERSE);
 
-
-        crServo = hwMap.crservo.get("crServo");
         clawServo = hwMap.servo.get("clawServo");
         //liftServo = hwMap.crservo.get("liftServo");
 
@@ -221,14 +221,17 @@ public class Robot {
         bl.setPower(0);
         br.setPower(0);
     }
-    public void duckServo(double power, long time){ //might not work look at sleep line
-        crServo.setPower(power);
-        fl.setPower(0);
-        fl.setPower(0);
-        fl.setPower(0);
-        fl.setPower(0);
-        sleep(time);
-        crServo.setPower(0);
+    public void duckMotor(double power, int encTicks){ //might not work look at sleep line
+            duck.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            duck.setTargetPosition(encTicks);
+            duck.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            duck.setPower(power);
+            while(duck.isBusy()){
+            }
+            duck.setPower(0);
+            duck.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+
     }
     public void rotate(double wantedAngle){
         angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);

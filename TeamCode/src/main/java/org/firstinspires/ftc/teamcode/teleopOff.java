@@ -28,6 +28,7 @@ public class teleopOff extends LinearOpMode {
         DcMotor bl = hardwareMap.dcMotor.get("back_left_motor");
         DcMotor br = hardwareMap.dcMotor.get("back_right_motor");
         DcMotor lift = hardwareMap.dcMotor.get("lift_dcMotor");
+        DcMotor duck = hardwareMap.dcMotor.get("duck_motor");
         //fl.setDirection(DcMotorSimple.Direction.REVERSE);
         fr.setDirection(DcMotorSimple.Direction.REVERSE);
         //bl.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -36,11 +37,10 @@ public class teleopOff extends LinearOpMode {
         lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        CRServo spinServo = hardwareMap.crservo.get("crServo");
         Servo clawServo = hardwareMap.servo.get("clawServo");
 
         double driveSpeed = 1;
-        double servoSpinSpeed = 0;
+        double duckSpinSpeed = 0;
         final int liftHome = 0;
         double robotAngle = 0;
 
@@ -72,7 +72,7 @@ public class teleopOff extends LinearOpMode {
                     telemetry.addData("Slow Mode", "ON");
                 } else { //if the current increment is not 1, it'll switch to 1
                     driveSpeed = 1;
-                    telemetry.addData("Normal speed", "ON");
+                    telemetry.addData("Slow Mode", "OFF");
                 }
             }
 
@@ -120,23 +120,23 @@ public class teleopOff extends LinearOpMode {
             br.setPower(v4);
 
             if (gamepad1.right_bumper) {
-                servoSpinSpeed = 1;
+                duckSpinSpeed = 1;
 
             }
             else if (gamepad1.left_bumper) {
-                servoSpinSpeed = -1;
+                duckSpinSpeed = -1;
 
             }
             else if (gamepad1.right_bumper && gamepad1.left_bumper) {
-                servoSpinSpeed = 0;
+                duckSpinSpeed = 0;
             }
             else {
-                servoSpinSpeed = 0;
+                duckSpinSpeed = 0;
 
             }
 
             //spin carousel servo gamepad
-            spinServo.setPower(servoSpinSpeed);
+            duck.setPower(duckSpinSpeed);
 
             if(gamepad1.dpad_down){
                 lift.setTargetPosition(liftHome);

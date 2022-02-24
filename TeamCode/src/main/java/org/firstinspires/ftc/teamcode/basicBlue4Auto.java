@@ -55,7 +55,7 @@ public class basicBlue4Auto extends LinearOpMode {
             robot.rotate(90);
             robot.driveBackDistance(.5, (int) (650/TICKSTOMMTRAVEL));
             robot.rotate(25);
-            robot.duckServo(1, 4400);
+            robot.duckMotor(1, 500);
             robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
             robot.rotate(0);
             robot.driveForwardDistance(.5, (int) (320/TICKSTOMMTRAVEL));

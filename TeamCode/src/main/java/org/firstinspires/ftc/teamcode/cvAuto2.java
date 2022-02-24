@@ -74,7 +74,7 @@ public class cvAuto2 extends LinearOpMode {
                 //robot.duckServo(1, 4400);
                 robot.driveLeftDistance(.5, (int) (170/TICKSTOMMTRAVEL));
                 robot.rotate(-45);
-                robot.duckServo(-1, 5000);
+                robot.duckMotor(1, -500);
                 robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
                 robot.rotate(0);
                 robot.driveForwardDistance(.5, (int) (400/TICKSTOMMTRAVEL));
@@ -105,7 +105,7 @@ public class cvAuto2 extends LinearOpMode {
                 //robot.duckServo(1, 4400);
                 robot.driveLeftDistance(.5, (int) (170/TICKSTOMMTRAVEL));
                 robot.rotate(-45);
-                robot.duckServo(-1, 5000);
+                robot.duckMotor(1, -500);
                 robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
                 robot.rotate(0);
                 robot.driveForwardDistance(.5, (int) (400/TICKSTOMMTRAVEL));
@@ -136,7 +136,7 @@ public class cvAuto2 extends LinearOpMode {
                 //robot.duckServo(1, 4400);
                 robot.driveLeftDistance(.5, (int) (170/TICKSTOMMTRAVEL));
                 robot.rotate(-45);
-                robot.duckServo(-1, 5000);
+                robot.duckMotor(1, -500);
                 robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
                 robot.rotate(0);
                 robot.driveForwardDistance(.5, (int) (400/TICKSTOMMTRAVEL));

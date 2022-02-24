@@ -26,6 +26,7 @@ public class teleopOff2 extends LinearOpMode {
         DcMotor bl = hardwareMap.dcMotor.get("back_left_motor");
         DcMotor br = hardwareMap.dcMotor.get("back_right_motor");
         DcMotor lift = hardwareMap.dcMotor.get("lift_dcMotor");
+        DcMotor duck = hardwareMap.dcMotor.get("duck_motor");
         //fl.setDirection(DcMotorSimple.Direction.REVERSE);
         fr.setDirection(DcMotorSimple.Direction.REVERSE);
         //bl.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -34,11 +35,10 @@ public class teleopOff2 extends LinearOpMode {
         lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        CRServo spinServo = hardwareMap.crservo.get("crServo");
         Servo clawServo = hardwareMap.servo.get("clawServo");
 
         double driveSpeed = 1;
-        double servoSpinSpeed = 0;
+        double duckSpinSpeed = 0;
         final int liftHome = 0;
         boolean fieldCentric = false;
         double finalAngle;
@@ -116,26 +116,26 @@ public class teleopOff2 extends LinearOpMode {
 
             if (gamepad2.right_bumper)
             {
-                servoSpinSpeed = 1;
+                duckSpinSpeed = 1;
 
             }
             else if (gamepad2.left_bumper)
             {
-                servoSpinSpeed = -1;
+                duckSpinSpeed = -1;
 
             }
             else if (gamepad2.right_bumper && gamepad2.left_bumper)
             {
-                servoSpinSpeed = 0;
+                duckSpinSpeed = 0;
             }
             else
             {
-                servoSpinSpeed = 0;
+                duckSpinSpeed = 0;
 
             }
 
             //spin carousel servo gamepad
-            spinServo.setPower(servoSpinSpeed);
+            duck.setPower(duckSpinSpeed);
 
             if(gamepad2.dpad_down){
                 lift.setTargetPosition(liftHome);

@@ -51,7 +51,7 @@ public class basicRed2Auto extends LinearOpMode {
             robot.driveBackDistance(.5, (int) (620/TICKSTOMMTRAVEL));
             robot.rotate(-25);
             robot.driveBackDistance(.5, (int) (250/TICKSTOMMTRAVEL));
-            robot.duckServo(-1, 4400);
+            robot.duckMotor(1, -500);
             robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
             robot.rotate(0);
             robot.driveForwardDistance(.5, (int) (250/TICKSTOMMTRAVEL));
