@@ -17,7 +17,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 import java.security.KeyStore;
 
-@Autonomous(name="basicRed w/ wh", group="Basic Autos") //telling robot it is autonoumous
+@Autonomous(name="red white wh park only", group="Basic Autos") //telling robot it is autonoumous
 public class basicRed1Auto extends LinearOpMode {
 
     //four rotations for lift all up
@@ -35,18 +35,9 @@ public class basicRed1Auto extends LinearOpMode {
 
         waitForStart();
         if(opModeIsActive()){
-            robot.clawClamp();
-            sleep(100);
-            robot.driveForwardDistance(.4, (int) (610/TICKSTOMMTRAVEL));
-            robot.rotate(45);
-            robot.liftMotor(100, -1);
-            robot.driveForwardDistance(.4, (int) (220/TICKSTOMMTRAVEL)); //random number
-            robot.clawOpen();
-            sleep(500);
-            robot.driveBackDistance(.4, (int) (150/TICKSTOMMTRAVEL));    //away from hub and to warehouse
-            //robot.liftMotor(500, 1);
-            robot.rotate(-90);
-            robot.driveForwardDistance(1, (int) (2000/TICKSTOMMTRAVEL)); //go to white warehouse //go to white warehouse
+            robot.liftMotor(-454, -.5);
+            robot.driveRightDistance(.5, 2000);
+            robot.liftMotor(454, .5);
         }
     }
 

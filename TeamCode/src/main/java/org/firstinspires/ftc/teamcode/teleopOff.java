@@ -94,7 +94,7 @@ public class teleopOff extends LinearOpMode {
             double r = Math.hypot(-gamepad1.left_stick_x, gamepad1.left_stick_y); //finds hypotenuse (power of each motor)
             double gpAngle = Math.atan2(gamepad1.left_stick_y, -gamepad1.left_stick_x) - Math.PI / 4; //finds angle of robot subtracted by pi/4 bc
             //it "shifts" the powers to each motor CW
-            double rightX = -gamepad1.right_stick_x; //for rotating w/ right stick
+            double rightX = (-gamepad1.right_stick_x) * .75; //for rotating w/ right stick
 
             if(fieldCentric){
                 finalAngle = gpAngle - robotAngle;
@@ -120,11 +120,11 @@ public class teleopOff extends LinearOpMode {
             br.setPower(v4);
 
             if (gamepad1.right_bumper) {
-                duckSpinSpeed = 1;
+                duckSpinSpeed = .6;
 
             }
             else if (gamepad1.left_bumper) {
-                duckSpinSpeed = -1;
+                duckSpinSpeed = -.6;
 
             }
             else if (gamepad1.right_bumper && gamepad1.left_bumper) {
@@ -167,10 +167,10 @@ public class teleopOff extends LinearOpMode {
 
 
             if (gamepad1.x) {
-                clawServo.setPosition(5);
+                clawServo.setPosition(.27);
             }
             if (gamepad1.b) {
-                clawServo.setPosition(0);
+                clawServo.setPosition(.7);
             }
 
             telemetry.addData("Drive Speed Multiplier", driveSpeed);

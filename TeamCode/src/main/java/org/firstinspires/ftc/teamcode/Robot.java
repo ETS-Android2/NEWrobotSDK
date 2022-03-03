@@ -221,17 +221,10 @@ public class Robot {
         bl.setPower(0);
         br.setPower(0);
     }
-    public void duckMotor(double power, int encTicks){ //might not work look at sleep line
-            duck.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            duck.setTargetPosition(encTicks);
-            duck.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            duck.setPower(power);
-            while(duck.isBusy()){
-            }
-            duck.setPower(0);
-            duck.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-
+    public void duckMotor(double power, int time){ //might not work look at sleep line
+        duck.setPower(power);
+        sleep(time);
+        duck.setPower(0);
     }
     public void rotate(double wantedAngle){
         angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
@@ -317,13 +310,13 @@ public class Robot {
     }
 
     public void clawOpen(){
-        double ninja = 0; //ninja from -180 to +180
+        double ninja = .7; //ninja from -180 to +180
         clawServo.setPosition(ninja);
 
     }
 
     public void clawClamp(){
-        double pirateos = 5; //-180 to +180
+        double pirateos = .375; //-180 to +180
         clawServo.setPosition(pirateos);
     }
 }

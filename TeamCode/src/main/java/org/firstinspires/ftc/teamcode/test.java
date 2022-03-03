@@ -31,6 +31,8 @@ public class test extends LinearOpMode {
         DcMotor bl = hardwareMap.dcMotor.get("back_left_motor");
         DcMotor br = hardwareMap.dcMotor.get("back_right_motor");
         DcMotor lift = hardwareMap.dcMotor.get("lift_dcMotor");
+        DcMotor duck = hardwareMap.dcMotor.get("duck_motor");
+        Servo clawServo = hardwareMap.servo.get("clawServo");
         fl.setDirection(DcMotorSimple.Direction.REVERSE);
         //bl.setDirection(DcMotorSimple.Direction.REVERSE);
         br.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -57,6 +59,9 @@ public class test extends LinearOpMode {
         double liftEncoder = 0;
         boolean runLift = true;
 
+        double encticks;
+        double pos = 0;
+
         Orientation angles;
         BNO055IMU imu;
 
@@ -66,34 +71,24 @@ public class test extends LinearOpMode {
         parameters.angleUnit = BNO055IMU.AngleUnit.RADIANS;
         imu.initialize(parameters);
 
-        lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        duck.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        duck.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         telemetry.addData("Status", "Initalized");
         telemetry.update();
         waitForStart();
         while (opModeIsActive()) {
 
-            liftEncoder = lift.getCurrentPosition();
-
-            if((gamepad1.right_trigger > 0) && gamepad1.left_trigger == 0){
-                lift.setPower(-gamepad1.right_trigger);
+            if(gamepad1.a){
+                pos = pos + .1;
             }
-            if((gamepad1.left_trigger > 0) && gamepad1.right_trigger == 0){
-                if(liftEncoder <= 0){
-                    lift.setPower(gamepad1.left_trigger);
-                }else{
-                    lift.setPower(0);
-                }
+            if(gamepad1.b){
+                pos = pos - .1;
             }
-            if(gamepad1.right_trigger == 0 && gamepad1.left_trigger == 0){
-                lift.setPower(0);
-            }
-
-
-
-            telemetry.addData("Ticks", liftEncoder);
+            clawServo.setPosition(pos);
+            telemetry.addData("pos", pos);
             telemetry.update();
+            sleep(1000);
 
 
         }

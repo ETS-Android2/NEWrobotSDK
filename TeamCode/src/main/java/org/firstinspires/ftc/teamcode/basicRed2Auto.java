@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-@Autonomous(name = "basic red w/ cara", group = "Basic Autos")
+@Autonomous(name = "Blue white wh park only", group = "Basic Autos")
 public class basicRed2Auto extends LinearOpMode {
     DcMotor fl = null;
     DcMotor fr = null;
@@ -33,29 +33,9 @@ public class basicRed2Auto extends LinearOpMode {
 
         waitForStart();
         if(opModeIsActive()){
-            robot.clawClamp();
-            sleep(100);
-            robot.driveForwardDistance(.4, (int) (610/TICKSTOMMTRAVEL));
-            robot.rotate(-45);
-            robot.liftMotor(100, -1);
-            robot.driveForwardDistance(.4, (int) (220/TICKSTOMMTRAVEL));
-            robot.clawOpen();
-            sleep(500);
-            robot.driveBackDistance(.4, (int) (150/TICKSTOMMTRAVEL));
-            //robot.liftMotor(500, 1);
-            robot.driveBackDistance(.4, (int) (70/TICKSTOMMTRAVEL));
-            robot.rotate(0);
-            robot.driveBackDistance(.5, (int) (610/TICKSTOMMTRAVEL));
-            robot.driveForwardDistance(.5, (int) (220/TICKSTOMMTRAVEL));
-            robot.rotate(-90);
-            robot.driveBackDistance(.5, (int) (620/TICKSTOMMTRAVEL));
-            robot.rotate(-25);
-            robot.driveBackDistance(.5, (int) (250/TICKSTOMMTRAVEL));
-            robot.duckMotor(1, -500);
-            robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
-            robot.rotate(0);
-            robot.driveForwardDistance(.5, (int) (250/TICKSTOMMTRAVEL));
-            robot.rotate(0);
+            robot.liftMotor(-454, -.5);
+            robot.driveLeftDistance(.5, 2000);
+            robot.liftMotor(454, .5);
         }
     }
 }

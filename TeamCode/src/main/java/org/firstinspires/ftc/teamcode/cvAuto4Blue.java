@@ -51,14 +51,14 @@ public class cvAuto4Blue extends LinearOpMode {
             telemetry.update();
 
             robot.clawClamp();
-            sleep(1500);
+            sleep(9500);
             if (pipeline.getAnalysis() == camera.SkystonePosition.RIGHT) {
                 telemetry.addData("right", "found item in right box");
                 telemetry.update();
                 robot.driveForwardDistance(.25, (int) (610/TICKSTOMMTRAVEL));
                 robot.rotate(60);
                 robot.liftMotor(-1940, -1);
-                robot.driveForwardDistance(.25, (int) (240/TICKSTOMMTRAVEL));
+                robot.driveForwardDistance(.25, (int) (320/TICKSTOMMTRAVEL));
                 robot.clawOpen();
                 sleep(500);
                 robot.driveBackDistance(.25, (int) (150/TICKSTOMMTRAVEL));
@@ -71,7 +71,9 @@ public class cvAuto4Blue extends LinearOpMode {
                 robot.rotate(90);
                 robot.driveBackDistance(.5, (int) (650/TICKSTOMMTRAVEL));
                 robot.rotate(25);
-                robot.duckMotor(1, 500);
+                robot.duckMotor(.2, 500);
+                robot.duckMotor(.4, 1000);
+                robot.duckMotor(.55, 1500);
                 robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
                 robot.rotate(0);
                 robot.driveForwardDistance(.5, (int) (330/TICKSTOMMTRAVEL));
@@ -85,7 +87,7 @@ public class cvAuto4Blue extends LinearOpMode {
                 robot.driveForwardDistance(.25, (int) (610/TICKSTOMMTRAVEL));
                 robot.rotate(60);
                 robot.liftMotor(-1130, -1);
-                robot.driveForwardDistance(.25, (int) (220/TICKSTOMMTRAVEL));
+                robot.driveForwardDistance(.25, (int) (320/TICKSTOMMTRAVEL));
                 robot.clawOpen();
                 sleep(500);
                 robot.driveBackDistance(.25, (int) (150/TICKSTOMMTRAVEL));
@@ -98,7 +100,9 @@ public class cvAuto4Blue extends LinearOpMode {
                 robot.driveBackDistance(.5, (int) (650/TICKSTOMMTRAVEL));
                 robot.rotate(25);
                 robot.driveBackDistance(.1, 10);
-                robot.duckMotor(1, 500);
+                robot.duckMotor(.2, 500);
+                robot.duckMotor(.4, 1000);
+                robot.duckMotor(.55, 1500);
                 robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
                 robot.rotate(0);
                 robot.driveForwardDistance(.5, (int) (330/TICKSTOMMTRAVEL));
@@ -110,9 +114,12 @@ public class cvAuto4Blue extends LinearOpMode {
                 telemetry.addData("left", "found item in left box");
                 telemetry.update();
                 robot.driveForwardDistance(.25, (int) (610/TICKSTOMMTRAVEL));
+                //added
+                robot.rotate(-60);
+                //end added
                 robot.rotate(60);
                 robot.liftMotor(-456, -1);
-                robot.driveForwardDistance(.25, (int) (220/TICKSTOMMTRAVEL));
+                robot.driveForwardDistance(.25, (int) (320/TICKSTOMMTRAVEL));
                 robot.clawOpen();
                 sleep(500);
                 robot.driveBackDistance(.25, (int) (150/TICKSTOMMTRAVEL));
@@ -124,7 +131,9 @@ public class cvAuto4Blue extends LinearOpMode {
                 robot.rotate(90);
                 robot.driveBackDistance(.5, (int) (650/TICKSTOMMTRAVEL));
                 robot.rotate(25);
-                robot.duckMotor(1, 500);
+                robot.duckMotor(.2, 500);
+                robot.duckMotor(.4, 1000);
+                robot.duckMotor(.55, 1500);
                 robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
                 robot.rotate(0);
                 robot.driveForwardDistance(.5, (int) (330/TICKSTOMMTRAVEL));
