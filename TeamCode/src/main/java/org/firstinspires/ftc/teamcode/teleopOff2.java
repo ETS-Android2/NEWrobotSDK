@@ -43,6 +43,8 @@ public class teleopOff2 extends LinearOpMode {
         boolean fieldCentric = false;
         double finalAngle;
         double robotAngle;
+        boolean aButton = true;
+        boolean yButton = true;
 
         double liftEncoder = 0;
 
@@ -61,30 +63,32 @@ public class teleopOff2 extends LinearOpMode {
         telemetry.addData("Status", "Initalized");
         telemetry.update();
         waitForStart();
-        boolean aThing = true;
         while (opModeIsActive()) {
 
             //speed control gamepad1
 
-            if (gamepad1.a && aThing) {
-                aThing = false;
+            if (gamepad1.a && aButton) {
+                aButton = false;
                 if (driveSpeed == 1) { //if the current increment is 1, it'll switch to 0.5
                     driveSpeed = 0.5;
                 } else { //if the current increment is not 1, it'll switch to 1
                     driveSpeed = 1;
                 }
             }
-            if (!gamepad1.a && !aThing) {
-                    aThing = true;
+            if (!gamepad1.a && !aButton) {
+                aButton = true;
             }
 
-            if (gamepad1.y){
-                if(fieldCentric){
+            if (gamepad1.y && yButton){
+                yButton = false;
+                if(fieldCentric) {
                     fieldCentric = false;
-                }
-                else{
+                } else {
                     fieldCentric = true;
                 }
+            }
+            if (!gamepad1.y && !yButton) {
+                yButton = true;
             }
 
             angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
@@ -93,7 +97,7 @@ public class teleopOff2 extends LinearOpMode {
             double r = Math.hypot(-gamepad1.left_stick_x, gamepad1.left_stick_y); //finds hypotenuse (power of each motor)
             double gpAngle = Math.atan2(gamepad1.left_stick_y, -gamepad1.left_stick_x) - Math.PI / 4; //finds angle of robot subtracted by pi/4 bc
             //it "shifts" the powers to each motor CW
-            double rightX = (-gamepad1.right_stick_x) * .75; //for rotating w/ right stick
+            double rightX = (-gamepad1.right_stick_x) * .8; //for rotating w/ right stick
 
             if(fieldCentric){
                 finalAngle = gpAngle - robotAngle;
@@ -122,12 +126,12 @@ public class teleopOff2 extends LinearOpMode {
 
             if (gamepad2.right_bumper)
             {
-                duckSpinSpeed = .6;
+                duckSpinSpeed = .7;
 
             }
             else if (gamepad2.left_bumper)
             {
-                duckSpinSpeed = -.6;
+                duckSpinSpeed = -.7;
 
             }
             else if (gamepad2.right_bumper && gamepad2.left_bumper)

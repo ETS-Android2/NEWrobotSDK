@@ -39,15 +39,15 @@ public class teleopOff extends LinearOpMode {
 
         Servo clawServo = hardwareMap.servo.get("clawServo");
 
-        double driveSpeed = 1;
+        double driveSpeed = .5;
         double duckSpinSpeed = 0;
         final int liftHome = 0;
         double robotAngle = 0;
-
         boolean fieldCentric = false;
         double finalAngle;
-
         double liftEncoder;
+        boolean aButton = true;
+        boolean yButton = true;
 
         Orientation angles;
         BNO055IMU imu;
@@ -66,27 +66,32 @@ public class teleopOff extends LinearOpMode {
         waitForStart();
         while (opModeIsActive()) {
 
-            if (gamepad1.a) {
+            if (gamepad1.a && aButton) {
+                aButton = false;
                 if (driveSpeed == 1) { //if the current increment is 1, it'll switch to 0.5
                     driveSpeed = 0.5;
-                    telemetry.addData("Slow Mode", "ON");
                 } else { //if the current increment is not 1, it'll switch to 1
                     driveSpeed = 1;
-                    telemetry.addData("Slow Mode", "OFF");
                 }
             }
+            if (!gamepad1.a && !aButton) {
+                aButton = true;
+            }
 
-            if(gamepad1.y){
+            if(gamepad1.y && yButton) {
+                yButton = false;
                 if(fieldCentric){
                     fieldCentric = false;
                 }
                 else{
                     fieldCentric = true;
                 }
-                telemetry.addData("fieldcentric", fieldCentric);
-                telemetry.update();
                 //sleep(1000);
             }
+            if (!gamepad1.y && !yButton) {
+                yButton = true;
+            }
+
 
             angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
             robotAngle = angles.firstAngle;
@@ -120,11 +125,11 @@ public class teleopOff extends LinearOpMode {
             br.setPower(v4);
 
             if (gamepad1.right_bumper) {
-                duckSpinSpeed = .6;
+                duckSpinSpeed = .7;
 
             }
             else if (gamepad1.left_bumper) {
-                duckSpinSpeed = -.6;
+                duckSpinSpeed = -.7;
 
             }
             else if (gamepad1.right_bumper && gamepad1.left_bumper) {

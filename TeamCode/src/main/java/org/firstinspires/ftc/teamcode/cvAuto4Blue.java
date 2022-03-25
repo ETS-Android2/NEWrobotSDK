@@ -51,22 +51,22 @@ public class cvAuto4Blue extends LinearOpMode {
             telemetry.update();
 
             robot.clawClamp();
-            sleep(9500);
+            sleep(2000);
             if (pipeline.getAnalysis() == camera.SkystonePosition.RIGHT) {
                 telemetry.addData("right", "found item in right box");
                 telemetry.update();
-                robot.driveForwardDistance(.25, (int) (610/TICKSTOMMTRAVEL));
-                robot.rotate(60);
+                robot.driveForwardDistance(.25, (int) (910/TICKSTOMMTRAVEL));
+                robot.rotate(120);
+                robot.rotate(90);
                 robot.liftMotor(-1940, -1);
-                robot.driveForwardDistance(.25, (int) (320/TICKSTOMMTRAVEL));
+                robot.driveForwardDistance(.25, (int) (220/TICKSTOMMTRAVEL));
                 robot.clawOpen();
                 sleep(500);
                 robot.driveBackDistance(.25, (int) (150/TICKSTOMMTRAVEL));
-                robot.liftMotor(1940, .5);
-                sleep(500);
+                robot.liftMotor(1940, -.5);
                 robot.driveBackDistance(.25, (int) (70/TICKSTOMMTRAVEL));
                 robot.rotate(0);
-                robot.driveBackDistance(.5, (int) (610/TICKSTOMMTRAVEL));
+                robot.driveBackDistance(.5, (int) (910/TICKSTOMMTRAVEL));
                 robot.driveForwardDistance(.5, (int) (70/TICKSTOMMTRAVEL));
                 robot.rotate(90);
                 robot.driveBackDistance(.5, (int) (650/TICKSTOMMTRAVEL));
@@ -76,7 +76,7 @@ public class cvAuto4Blue extends LinearOpMode {
                 robot.duckMotor(.55, 1500);
                 robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
                 robot.rotate(0);
-                robot.driveForwardDistance(.5, (int) (330/TICKSTOMMTRAVEL));
+                robot.driveForwardDistance(.5, (int) (360/TICKSTOMMTRAVEL));
                 sleep(500);
                 robot.rotate(0);
                 //robot.liftMotor(1940, .5);
@@ -84,17 +84,18 @@ public class cvAuto4Blue extends LinearOpMode {
             else if (pipeline.getAnalysis() == camera.SkystonePosition.CENTER) {
                 telemetry.addData("center", "found item in center box");
                 telemetry.update();
-                robot.driveForwardDistance(.25, (int) (610/TICKSTOMMTRAVEL));
-                robot.rotate(60);
+                robot.driveForwardDistance(.25, (int) (910/TICKSTOMMTRAVEL));
+                robot.rotate(120);
+                robot.rotate(90);
                 robot.liftMotor(-1130, -1);
-                robot.driveForwardDistance(.25, (int) (320/TICKSTOMMTRAVEL));
+                robot.driveForwardDistance(.25, (int) (220/TICKSTOMMTRAVEL));
                 robot.clawOpen();
                 sleep(500);
                 robot.driveBackDistance(.25, (int) (150/TICKSTOMMTRAVEL));
-                robot.liftMotor(1130, .5);
+                robot.liftMotor(1130, -.5);
                 robot.driveBackDistance(.25, (int) (70/TICKSTOMMTRAVEL));
                 robot.rotate(0);
-                robot.driveBackDistance(.5, (int) (610/TICKSTOMMTRAVEL));
+                robot.driveBackDistance(.5, (int) (910/TICKSTOMMTRAVEL));
                 robot.driveForwardDistance(.5, (int) (70/TICKSTOMMTRAVEL));
                 robot.rotate(90);
                 robot.driveBackDistance(.5, (int) (650/TICKSTOMMTRAVEL));
@@ -105,7 +106,7 @@ public class cvAuto4Blue extends LinearOpMode {
                 robot.duckMotor(.55, 1500);
                 robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
                 robot.rotate(0);
-                robot.driveForwardDistance(.5, (int) (330/TICKSTOMMTRAVEL));
+                robot.driveForwardDistance(.5, (int) (360/TICKSTOMMTRAVEL));
                 sleep(500);
                 robot.rotate(0);
                 //robot.liftMotor(1130, .5);
@@ -113,30 +114,28 @@ public class cvAuto4Blue extends LinearOpMode {
             else if (pipeline.getAnalysis() == camera.SkystonePosition.LEFT) {
                 telemetry.addData("left", "found item in left box");
                 telemetry.update();
-                robot.driveForwardDistance(.25, (int) (610/TICKSTOMMTRAVEL));
-                //added
-                robot.rotate(-60);
-                //end added
-                robot.rotate(60);
+                robot.driveForwardDistance(.25, (int) (910/TICKSTOMMTRAVEL));
+                robot.rotate(120);
+                robot.rotate(90);
                 robot.liftMotor(-456, -1);
-                robot.driveForwardDistance(.25, (int) (320/TICKSTOMMTRAVEL));
+                robot.driveForwardDistance(.25, (int) (220/TICKSTOMMTRAVEL));
                 robot.clawOpen();
                 sleep(500);
                 robot.driveBackDistance(.25, (int) (150/TICKSTOMMTRAVEL));
                 robot.liftMotor(456, -.5);
                 robot.driveBackDistance(.25, (int) (70/TICKSTOMMTRAVEL));
                 robot.rotate(0);
-                robot.driveBackDistance(.5, (int) (610/TICKSTOMMTRAVEL));
+                robot.driveBackDistance(.5, (int) (910/TICKSTOMMTRAVEL));
                 robot.driveForwardDistance(.5, (int) (70/TICKSTOMMTRAVEL));
                 robot.rotate(90);
-                robot.driveBackDistance(.5, (int) (650/TICKSTOMMTRAVEL));
+                robot.driveBackDistance(.5, (int) (600/TICKSTOMMTRAVEL));
                 robot.rotate(25);
                 robot.duckMotor(.2, 500);
                 robot.duckMotor(.4, 1000);
                 robot.duckMotor(.55, 1500);
                 robot.driveForwardDistance(.5, (int) (30/TICKSTOMMTRAVEL));
                 robot.rotate(0);
-                robot.driveForwardDistance(.5, (int) (330/TICKSTOMMTRAVEL));
+                robot.driveForwardDistance(.5, (int) (360/TICKSTOMMTRAVEL));
                 sleep(500);
                 robot.rotate(0);
                 //robot.liftMotor(456, .5);
